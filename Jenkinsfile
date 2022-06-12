@@ -16,8 +16,8 @@ pipeline{
 
         stage('Deploy on tesing Server'){
             steps{
-               // build job: 'Deploy on Testing Server'
-               echo "deploy on testing"
+                build job: 'Deploy on Testing Server'
+               //echo "deploy on testing"
 
             }
         }
