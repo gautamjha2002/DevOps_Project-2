@@ -16,15 +16,17 @@ pipeline{
 
         stage('Deploy on tesing Server'){
             steps{
-                echo "Deployed on Testing Server"
+                build job: 'Deploy on Testing Server'
 
             }
         }
 
         stage('deploy on Production server'){
             steps{
-               echo "Deplloyed on Production server"
-                
+                timeout(time:5, unit:'DAYS'){
+                    input message: 'Approve Production Deployment?'
+                }
+                build job: 'Deploy on Production Server'
             }
         }
     }
