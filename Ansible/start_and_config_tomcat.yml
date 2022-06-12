@@ -1,0 +1,23 @@
+---
+ - name: Configuring and starting Tomcat
+   hosts: all
+   gather_facts: false
+   vars:
+     TOMCAT_PASS: 965097
+     ROLENAME1: "manager-gui"
+     ROLENAME2: "manager-script"
+
+   become: yes
+   tasks:
+   - name: Shuting down Tomcat if it is Running 
+     shell: nohup /opt/tomcat/bin/shutdown.sh
+   - name: Setting tomcatusers.xml file 
+     template:
+       src: ./tomcat-users.xml.j2
+       dest: /opt/tomcat/conf/tomcat-users.xml
+   - name:
+     template:
+       src: ./context.xml.j2
+       dest: /opt/tomcat/webapps/manager/META-INF/context.xml
+   - name: Starting Tomcat
+     shell: nohup /opt/tomcat/bin/startup.sh

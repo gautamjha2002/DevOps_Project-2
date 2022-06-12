@@ -1,0 +1,36 @@
+---
+ - name: Installing Java and Tomcat on the Testing and Production Server
+   hosts: all
+   gather_facts: false
+   vars:
+     JAVA: java-1.8.0-openjdk
+     TOMCAT_URL: https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.64/bin/apache-tomcat-9.0.64.tar.gz
+   become: yes
+   tasks:
+    - name: Updating Repositories
+      yum:
+        name: "*"
+        state: latest
+    - name: Installing Java
+      yum:
+        name: "{{JAVA}}"
+        state: latest
+    - name: Downloading Tomcat
+      get_url:
+        url: "{{TOMCAT_URL}}"
+        dest: /opt/ 
+    - name: Extacting Downloaded Tomcat
+      unarchive: 
+         src: "/opt/apache-tomcat-9.0.64.tar.gz"
+         dest: /opt/
+         remote_src: yes
+    - name: Deleting The original tar file
+      file:
+        path: /opt/apache-tomcat-9.0.64.tar.gz
+        state: absent
+    - name: Renaming Tomcat Folder
+      command: mv /opt/apache-tomcat-9.0.64 /opt/tomcat
+    - name: Starting Tomcat
+      shell: nohup /opt/tomcat/bin/startup.sh
+
+
