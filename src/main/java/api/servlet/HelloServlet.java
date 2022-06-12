@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-@WebServlet("/hello")
+@WebServlet("/index")
 public class HelloServlet extends HttpServlet {
 
     @Override

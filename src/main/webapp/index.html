@@ -7,7 +7,7 @@
 var ajax = new XMLHttpRequest();
 ajax.onload = functionName;
 ajax.onerror = errorFunctionName;
-ajax.open("GET", "http://localhost:8080/api/hello", true);
+ajax.open("GET", "http://localhost:8080/api/index", true);
 ajax.send();
 
 function functionName() {
@@ -30,7 +30,7 @@ function errorFunctionName(e) {
 
 <hr/>
 <h1>Example :: Post Vivaan</h1>
-<form method="post" action="/hello">
+<form method="post" action="/index">
     <input type="text" id="name">
     <input type="button" value="Send" onclick="sendDataToServer(form.name.value)">
 </form>
@@ -41,7 +41,7 @@ function errorFunctionName(e) {
     function sendDataToServer(data) {
         var ajax = new XMLHttpRequest();
         ajax.onload = receiveResponse;
-        ajax.open("POST", "http://localhost:8080/api/hello", true);
+        ajax.open("POST", "http://localhost:8080/api/index", true);
         ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         ajax.send(JSON.stringify({ name: data }));
     }

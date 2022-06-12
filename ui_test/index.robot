@@ -20,5 +20,5 @@ Library   SeleniumLibrary
 
 
 เปิดหน้า web ด้วย chrome
-    Open Browser   http://localhost:8080/api/hello.html
+    Open Browser   http://localhost:8080/api/index.html
     ...   browser=chrome
