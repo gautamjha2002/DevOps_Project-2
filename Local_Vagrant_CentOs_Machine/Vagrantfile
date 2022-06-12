@@ -63,33 +63,33 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
   # documentation for more information about their specific syntax and use.
-   config.vm.provision "shell", inline: <<-SHELL
-     echo "Updating Packages"
-     sudo yum update -y
-     echo "installing wget package and git"
-     yum install wget git -y
-     echo "Installing Jenkins"
-     sudo wget -O /etc/yum.repos.d/jenkins.repo \
-     https://pkg.jenkins.io/redhat-stable/jenkins.repo
-     sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-     sudo yum upgrade -y
-     sudo yum install java-11-openjdk -y
-     sudo yum install jenkins -y
-     echo "Reloading Deamon"
-     sudo systemctl daemon-reload
-     echo "Staring Jenkins..."
-     sudo systemctl start jenkins
-     echo "enabling Jenkins..."
-     sudo systemctl enable jenkins
-     echo "Installing Python3"
-     sudo yum install python3 -y
-     echo "Installing Ansible"
-     sudo yum install epel-release -y
-     sudo yum install ansible -y
+   #config.vm.provision "shell", inline: <<-SHELL
+    # echo "Updating Packages"
+    # sudo yum update -y
+    # echo "installing wget package and git"
+    # yum install wget git -y
+    # echo "Installing Jenkins"
+    # sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    # https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    # sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+    # sudo yum upgrade -y
+    # sudo yum install java-11-openjdk -y
+    # sudo yum install jenkins -y
+    # echo "Reloading Deamon"
+    # sudo systemctl daemon-reload
+    # echo "Staring Jenkins..."
+    # sudo systemctl start jenkins
+    # echo "enabling Jenkins..."
+    # sudo systemctl enable jenkins
+    # echo "Installing Python3"
+    # sudo yum install python3 -y
+    # echo "Installing Ansible"
+    # sudo yum install epel-release -y
+    # sudo yum install ansible -y
      
 
 
 
 
-   SHELL
+  # SHELL
 end
